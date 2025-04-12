@@ -1,0 +1,9 @@
+{%extends "articles/base_layout.html" %}
+{% block title %}{{ article.title }}{% endblock title %}
+{%block content %}
+<div class="article-detail">
+    <h1>{{ article.title }}</h1>
+    <p class = "article-p">{{ article.body }}</p>
+    <img class = "article-img" src = "{{ article.thumbnail.url }}" alt = "">
+</div>
+{% endblock content %}

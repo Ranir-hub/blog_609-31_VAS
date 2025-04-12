@@ -1,0 +1,12 @@
+{% extends "articles/base_layout.html" %}
+{% block title %}Sign Up{% endblock title %}
+
+{% block content %}
+<h1>Login</h1>
+<form class = "form" action ="/accounts/login/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type = "submit" class = "auth-btn">Login</button>
+    <a href="{% url 'signup' %}" class = "auth-btn">Signup</a>
+</form>
+{% endblock content %}
