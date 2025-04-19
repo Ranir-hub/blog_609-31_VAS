@@ -3,10 +3,13 @@
 
 {% block content %}
 <h1>Login</h1>
-<form class = "form" action ="/accounts/login/" method="post">
+<form class = "form" action ="{% url 'accounts:login' %}" method="post">
     {% csrf_token %}
     {{ form }}
+    {% if request.GET.next %}
+        <input type = "hidden" name = "text" value="{{ request.get.next }}">
+    {% endif %}
     <button type = "submit" class = "auth-btn">Login</button>
-    <a href="{% url 'signup' %}" class = "auth-btn">Signup</a>
+    <a href="{% url 'accounts:signup' %}" class = "auth-btn">Signup</a>
 </form>
 {% endblock content %}

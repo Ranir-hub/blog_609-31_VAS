@@ -11,22 +11,16 @@
 <body>
     <header>
         <div class="navigation">
-            <a href="/articles/">
+            <a href="{% url 'homepage' %}">
                 <img src="{% static '/img/logo.png' %}" alt="logo">
             </a>
-            {% for element in articles %}
-            <a href="{% url 'article_detail' slug=element.slug %}">
-                {{ element.title }}
-            </a>
-            {% endfor %}
-            
             {% if user.is_authenticated %}
-            <form class="form_logout" action="{% url 'logout' %}" method="post">
+            <form class="form_logout" action="{% url 'accounts:logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
             {% else %}
-            <a href = "{% url 'login' %}">Login</a>
+            <a href = "{% url 'accounts:login' %}">Login</a>
             {% endif %}
         </div>
     </header>
