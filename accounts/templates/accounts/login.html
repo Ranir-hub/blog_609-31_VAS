@@ -1,13 +1,13 @@
 {% extends "articles/base_layout.html" %}
-{% block title %}Sign Up{% endblock title %}
-
+{% load static %}
+{% block title %}Login{% endblock title %}
 {% block content %}
 <h1>Login</h1>
 <form class = "form" action ="{% url 'accounts:login' %}" method="post">
     {% csrf_token %}
     {{ form }}
     {% if request.GET.next %}
-        <input type = "hidden" name = "text" value="{{ request.get.next }}">
+        <input type = "hidden" name = "next" value="{{ request.GET.next }}">
     {% endif %}
     <button type = "submit" class = "auth-btn">Login</button>
     <a href="{% url 'accounts:signup' %}" class = "auth-btn">Signup</a>
