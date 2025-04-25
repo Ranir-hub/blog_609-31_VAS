@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Default title{% endblock title %}</title>
+    
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
 
@@ -20,7 +21,8 @@
                 <button type="submit">Logout</button>
             </form>
             {% else %}
-            <a href = "{% url 'accounts:login' %}">Login</a>
+                <a class = "btn btn-outline-primary" href ="{% url 'accounts:login' %}">Login</a>
+                <a class = "btn btn-primary" href="{% url 'accounts:signup' %}">Sign up</a>
             {% endif %}
         </div>
     </header>

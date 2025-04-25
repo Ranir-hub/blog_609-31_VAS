@@ -1,9 +1,23 @@
-{%extends "articles/base_layout.html" %}
+{% extends "articles/base_layout.html" %}
 {% block title %}{{ article.title }}{% endblock title %}
 {%block content %}
 <div class="article-detail">
     <h1>{{ article.title }}</h1>
     <p class = "article-p">{{ article.body }}</p>
+    {% if article.thumbnail %}
     <img class = "article-img" src = "{{ article.thumbnail.url }}" alt = "">
+    {% endif %}
+    {% if user.is_authenticated and user.id == article.author.id %}
+        <div>
+            <a class = "btn btn-warning"
+                href = "{% url 'articles:update' slug=article.slug %}">
+                Update
+            </a>
+            <a class = "btn btn-danger"
+                href = "{% url 'articles:delete' slug=article.slug %}">
+                Delete
+            </a>
+        </div>
+    {% endif %}
 </div>
 {% endblock content %}
