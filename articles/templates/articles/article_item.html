@@ -9,11 +9,11 @@
     {% endif %}
     {% if user.is_authenticated and user.id == article.author.id %}
         <div>
-            <a class = "btn btn-warning"
+            <a class = "btn"
                 href = "{% url 'articles:update' slug=article.slug %}">
                 Update
             </a>
-            <a class = "btn btn-danger"
+            <a class = "btn"
                 href = "{% url 'articles:delete' slug=article.slug %}">
                 Delete
             </a>

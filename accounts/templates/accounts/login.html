@@ -3,13 +3,20 @@
 {% block title %}Login{% endblock title %}
 {% block content %}
 <h1>Login</h1>
-<form class = "form" action ="{% url 'accounts:login' %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    {% if request.GET.next %}
-        <input type = "hidden" name = "next" value="{{ request.GET.next }}">
-    {% endif %}
-    <button type = "submit" class = "auth-btn">Login</button>
-    <a href="{% url 'accounts:signup' %}" class = "auth-btn">Signup</a>
-</form>
+
+<div class = "container">
+    <div class ="row g-4 justify-content-center">
+        <div class = "col-md-8 col-lg-6">
+            <form class = "form" action ="{% url 'accounts:login' %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                {% if request.GET.next %}
+                    <input type = "hidden" name = "next" value="{{ request.GET.next }}">
+                {% endif %}
+                <button type = "submit" class = "btn">Login</button>
+                <a href="{% url 'accounts:signup' %}" class = "btn">Signup</a>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
